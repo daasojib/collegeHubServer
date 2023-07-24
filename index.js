@@ -31,9 +31,16 @@ async function run() {
         // await client.connect();
 
         const collegeCollection = client.db('collegeHubDb').collection('collegeDetails')
+        const researchCollection = client.db('collegeHubDb').collection('research')
 
         app.get('/collegeDetails', async(req, res) => {
             const result = await collegeCollection.find().toArray()
+            res.send(result)
+        })
+
+
+        app.get('/research', async(req, res) => {
+            const result = await researchCollection.find().toArray()
             res.send(result)
         })
 
